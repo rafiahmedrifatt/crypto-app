@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { Layout, Typography, Space } from 'antd';
 import './App.css';
-import { Navbar, Homepage, Exchanges, Cryptocurrencies, CryptoDetails, News} from './Components';
-
+import { Navbar, Homepage, Exchanges, Cryptocurrencies, CryptoDetails, News } from './Components';
+import {Provider} from 'react-redux'
+import store from './app/store'
 
 function App() {
   return (
     <Router>
+      <Provider store={store}>
       <div className="app">
         <div className="navbar">
           <Navbar />
@@ -24,11 +26,15 @@ function App() {
               </Routes>
             </div>
           </Layout>
-        </div>
-        <div className="footer">
-
+          <div className="footer" >
+            <Typography.Title level={5} style={{ color: 'white', textAlign: "center" }}>
+              Cryptoverse <br />
+              All rights reserved
+            </Typography.Title>
+          </div>
         </div>
       </div>
+      </Provider>
     </Router>
   );
 }
