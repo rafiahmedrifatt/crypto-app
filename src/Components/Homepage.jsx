@@ -10,6 +10,7 @@ const { Title } = Typography;
 
 const Homepage = () => {
     const {data, isFetching} = useGetCryptosQuery(10)
+    console.log({data, isFetching})
     const globalState = data?.data?.stats;
     if(isFetching) return <Loader/>
 
@@ -18,11 +19,11 @@ const Homepage = () => {
         <>
             <Title level={2} className='heading'>Global Crypto Stats</Title>
             <Row>
-                <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalState.total} /></Col>
-                <Col span={12}><Statistic title="Total Exchanges" value={millify(globalState.totalExchanges)} /></Col>
-                <Col span={12}><Statistic title="Total Market Cap" value={millify(globalState.totalMarketCap)}/></Col>
-                <Col span={12}><Statistic title="Total 24h volume" value={millify(globalState.total24hVolume)} /></Col>
-                <Col span={12}><Statistic title="Total Markets" value={millify(globalState.totalMarkets)} /></Col>
+                <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalState?.total} /></Col>
+                <Col span={12}><Statistic title="Total Exchanges" value={millify(globalState?.totalExchanges)} /></Col>
+                <Col span={12}><Statistic title="Total Market Cap" value={millify(globalState?.totalMarketCap)}/></Col>
+                <Col span={12}><Statistic title="Total 24h volume" value={millify(globalState?.total24hVolume)} /></Col>
+                <Col span={12}><Statistic title="Total Markets" value={millify(globalState?.totalMarkets)} /></Col>
             </Row>
             <div className="home-heading-container">
                 <Title level={2} className='home-title'>Top 10 Cryptocurrencies in the world</Title>
